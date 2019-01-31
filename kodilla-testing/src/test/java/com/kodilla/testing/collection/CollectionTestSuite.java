@@ -35,6 +35,7 @@ public class CollectionTestSuite {
         numbers3.add(4);
         numbers3.add(8);
         numbers3.add(7);
+        numbers3.add(4);
         numbers3.exterminate();
     }
 }
