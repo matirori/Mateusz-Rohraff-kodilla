@@ -2,11 +2,9 @@ package com.kodilla.testing.collection;
 
 import java.util.ArrayList;
 
-
 public class OddNumbersExterminator {
 
-
-    public void exterminate(ArrayList<Integer> numbers){
+    public ArrayList<Integer> exterminate(ArrayList<Integer> numbers){
         ArrayList<Integer> numbersAfterExtraction = new ArrayList<>();
         for (Integer number : numbers) {
             if (number%2 == 0){
@@ -14,5 +12,6 @@ public class OddNumbersExterminator {
             }
         }
         System.out.println("Tablica utworzona z liczb parzystych ma wielkość " + numbersAfterExtraction.size());
+        return numbersAfterExtraction;
     }
 }
