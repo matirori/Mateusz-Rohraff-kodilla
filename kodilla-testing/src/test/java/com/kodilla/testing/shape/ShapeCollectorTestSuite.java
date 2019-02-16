@@ -24,46 +24,70 @@ public class ShapeCollectorTestSuite {
     @Test
     public void testAddFigure(){
         //Given
-        Shape shape = new Shape("Triangle", 12);
+        Shape shape = new Triangle(5,6,4);
+        Shape shape1 = new Circle(6);
+        Shape shape2= new Triangle(5,6,6);
+        Shape shape3 = new Squere(5,7);
+        ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        shape.addFigure();
+        shapeCollector.addFigure(shape);
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
         //Then
-        Assert.assertNull(shapes.size());
+        Assert.assertEquals(4, shapeCollector.getFigure().size());
     }
 
     @Test
     public void testRemoveFigure(){
         //Given
-        Shape shape = new Shape("Triangle", 12);
-        shapes.add(shape);
+        Shape shape = new Triangle(5,6,4);
+        Shape shape1 = new Circle(6);
+        Shape shape2= new Triangle(5,6,6);
+        Shape shape3 = new Squere(5,7);
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(shape);
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
         //When
-        shape.removeFigure(shape);
+        shapeCollector.removeFigure(shape);
         //Then
-        Assert.assertEquals(0, shapes.size());
+        Assert.assertEquals(3, shapeCollector.getFigure().size());
     }
 
     @Test
     public void testGetFigure(){
         //Given
-        Shape shape = new Shape("Circle", 14);
-        shapes.add(shape);
+        Shape shape = new Triangle(5,6,4);
+        Shape shape1 = new Circle(6);
+        Shape shape2= new Triangle(5,6,6);
+        Shape shape3 = new Squere(5,7);
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(shape);
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
         //When
-        Shape shape1 = shape.getFigure(0);
+        Shape shape4 = shapeCollector.getFigure(3);
         //Then
-        Assert.assertEquals(shape, shape1);
+        Assert.assertEquals(shape3, shape4);
     }
 
     @Test
     public void testShowFigures(){
         //Given
-        Shape shape = new Shape("Square", 15);
-        Shape shape1 = new Shape("Triangle", 15);
-        Shape shape2 = new Shape("Square", 15);
-        shapes.add(shape);
-        shapes.add(shape1);
-        shapes.add(shape2);
+        Shape shape = new Triangle(5,6,4);
+        Shape shape1 = new Circle(6);
+        Shape shape2= new Triangle(5,6,6);
+        Shape shape3 = new Squere(5,7);
+        ShapeCollector shapeCollector = new ShapeCollector();
+        shapeCollector.addFigure(shape);
+        shapeCollector.addFigure(shape1);
+        shapeCollector.addFigure(shape2);
+        shapeCollector.addFigure(shape3);
         //When
-        shapes.showFigures();
+        shapeCollector.showFigures();
         //Then
     }
 }

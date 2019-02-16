@@ -15,6 +15,14 @@ public class Circle implements Shape {
 
     @Override
     public double getField() {
-        return (Math.PI * (radius^2))/2 ; // moge tak podnosić do kwadratu??
+        return (Math.PI * (Math.pow(radius, 2)))/2 ;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "radius=" + radius +
+                '}';
     }
 }

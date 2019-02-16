@@ -19,4 +19,12 @@ public class Squere implements Shape {
     public double getField() {
         return side * side2;
     }
+
+    @Override
+    public String toString() {
+        return "Squere{" +
+                "side=" + side +
+                ", side2=" + side2 +
+                '}';
+    }
 }

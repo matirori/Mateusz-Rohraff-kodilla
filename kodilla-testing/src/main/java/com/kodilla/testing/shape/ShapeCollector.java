@@ -1,6 +1,7 @@
 package com.kodilla.testing.shape;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShapeCollector {
 
@@ -11,23 +12,18 @@ public class ShapeCollector {
     }
 
     public void removeFigure(Shape shape){
-        for (Shape object: shapes
-             ) {
-            if(object.equals(shape)){
-            shapes.remove(object);
-            }
-        }
+            shapes.remove(shape);
+    }
+
+    public List<Shape> getFigure(){
+        return shapes;
     }
 
     public Shape getFigure(int n){
         return shapes.get(n);
     }
 
-    public Shape showFigures(){
-        for (Shape object: shapes
-             ) {
-            return object;
-        }
-        return null;
+    public void showFigures(){
+            System.out.println(shapes);
     }
 }
