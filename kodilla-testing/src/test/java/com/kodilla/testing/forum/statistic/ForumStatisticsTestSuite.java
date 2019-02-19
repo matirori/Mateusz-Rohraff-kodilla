@@ -1,4 +1,4 @@
-package com.kodilla.testing.forum.statistics;
+package com.kodilla.testing.forum.statistic;
 
 import org.junit.*;
 
@@ -28,9 +28,9 @@ public class ForumStatisticsTestSuite {
     }
 
     @Test
-    public void test1() {
+    public void conditionPostQuantity1000() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
         for(int i=0; i<10; i++){
             fakeUsers.add("blablabla");
@@ -42,17 +42,17 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0.01, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(100, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(0.01, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(100, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test2() {
+    public void conditionPostQuantity0() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
         for(int i=0; i<10; i++){
             fakeUsers.add("blablabla");
@@ -64,17 +64,17 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test3() {
+    public void conditionCommnetsQuantity0() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
         for(int i=0; i<10; i++){
             fakeUsers.add("blablabla");
@@ -86,17 +86,17 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test4() {
+    public void conditionCommentsQuantityLessThanPostQuantity() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
         for(int i=0; i<10; i++){
             fakeUsers.add("blablabla");
@@ -108,17 +108,17 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test5() {
+    public void conditionCommentsQuantityGreaterThanPostQuantity() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
         for(int i=0; i<10; i++){
             fakeUsers.add("blablabla");
@@ -130,36 +130,39 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(10, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test6() {
+    public void conditionUserQuantity0() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
+        for(int i=0; i<0; i++){
+            fakeUsers.add("blablabla");
+        }
 
         when(statisticsMock.usersNames()).thenReturn(fakeUsers);
-        when(statisticsMock.postsCount()).thenReturn(100);
+        when(statisticsMock.postsCount()).thenReturn(10);
         when(statisticsMock.commentsCount()).thenReturn(10);
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 
     @Test
-    public void test7() {
+    public void conditionUserQuantity100() {
         //given
-        Statistics statisticsMock = mock(Statistics.class);
+       Statistic statisticsMock = mock(Statistic.class);
         List<String> fakeUsers = new LinkedList<>();
 
         for(int i=0; i<100; i++){
@@ -172,10 +175,10 @@ public class ForumStatisticsTestSuite {
 
         ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
         //when
-        forumStatistics.calculateAdvanceStatistics(statisticsMock);
+        forumStatistics.calculateAdvanceStatistics();
         //then
-        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerPost());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfCommentsPerUser());
-        Assert.assertEquals(0, forumStatistics.getAvgQuantityOfPostsPerUser());
+        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerPost(), 0.001);
+        Assert.assertEquals(0.1, forumStatistics.getAvgQuantityOfCommentsPerUser(), 0.001);
+        Assert.assertEquals(1, forumStatistics.getAvgQuantityOfPostsPerUser(), 0.001);
     }
 }

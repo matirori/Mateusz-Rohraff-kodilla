@@ -1,9 +1,9 @@
-package com.kodilla.testing.forum.statistics;
+package com.kodilla.testing.forum.statistic;
 
 public class ForumStatistics {
-    Statistics statistics;
+    private Statistic statistics;
 
-    public ForumStatistics(Statistics statistics) {
+    public ForumStatistics(Statistic statistics) {
         this.statistics = statistics;
     }
     double quantityOfUsers;
@@ -13,14 +13,23 @@ public class ForumStatistics {
     double avgQuantityOfCommentsPerUser;
     double avgQuantityOfCommentsPerPost;
 
-    public void calculateAdvanceStatistics(Statistics statistics) {
+    public void calculateAdvanceStatistics() {
 
         quantityOfUsers = statistics.usersNames().size();
         quantityOfForumPosts = statistics.postsCount();
         quantityOfForumComments = statistics.commentsCount();
-        avgQuantityOfPostsPerUser = quantityOfForumPosts / quantityOfUsers;
-        avgQuantityOfCommentsPerUser = quantityOfForumComments / quantityOfUsers;
-        avgQuantityOfCommentsPerPost = quantityOfForumComments / quantityOfForumPosts;
+        if(quantityOfUsers == 0){
+            avgQuantityOfPostsPerUser = 0;
+            }else {
+                avgQuantityOfPostsPerUser = quantityOfForumPosts / quantityOfUsers;}
+        if(quantityOfUsers == 0){
+            avgQuantityOfCommentsPerUser = 0;
+            }else{
+                avgQuantityOfCommentsPerUser = quantityOfForumComments / quantityOfUsers;}
+        if (quantityOfForumPosts == 0) {
+            avgQuantityOfCommentsPerPost = 0;
+            }else{
+                avgQuantityOfCommentsPerPost = quantityOfForumComments / quantityOfForumPosts;}
     }
 
     public double getAvgQuantityOfPostsPerUser(){
