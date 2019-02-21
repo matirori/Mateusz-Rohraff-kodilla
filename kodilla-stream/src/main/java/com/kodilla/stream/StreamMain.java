@@ -1,40 +1,31 @@
 package com.kodilla.stream;
 
-import com.kodilla.stream.beautifer.PoemBeautifer;
-import com.kodilla.stream.lambda.Executor;
-import com.kodilla.stream.lambda.Processor;
-import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.reference.FunctionalCalculator;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
 
-import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
-import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamMain {
     public static void main(String[] args) {
-        /*Processor processor = new Processor();
-        Executor codeToExecute = () -> System.out.println("This is an example text.");
-        processor.execute(codeToExecute);
 
-
-        ExpressionExecutor expressionExecutor = new ExpressionExecutor();
-
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a + b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a - b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a * b);
-        expressionExecutor.executeExpression(10, 5, (a, b) -> a / b);
-
-        System.out.println("Calculating expressions with method references");
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::multiplyAByB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::addAToB);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::subBFromA);
-        expressionExecutor.executeExpression(3, 4, FunctionalCalculator::divideAByB);
-        */
-
-        PoemBeautifer poemBeautifer = new PoemBeautifer();
+      /*  PoemBeautifer poemBeautifer = new PoemBeautifer();
         poemBeautifer.beautify("Witam w Wejherowie", (text -> "ABC " + text + " ABC"));
         poemBeautifer.beautify("Witam w Wejherowie", (text -> toUpperCase(text)));
         poemBeautifer.beautify("Witam w Wejherowie", (text -> text.replaceAll("Wejherowie", "Gdyni ")));
-        poemBeautifer.beautify("Witam w Wejherowie", (text -> (text.split(" ", text.length()).toString()))); //do omówienia
+        poemBeautifer.beautify("Witam w Wejherowie", (text -> (Arrays.toString(text.split(" ", text.length()))).replaceAll("\\[|\\]", "")));
         poemBeautifer.beautify("Witam w Wejherowie", (text -> toLowerCase(text)));
-    }
-}
+*/
+        Forum forum = new Forum();
+
+        Map<Integer, ForumUser> theMapOfForumUsers = forum.getUserList().stream()
+                .filter(forumUser -> forumUser.getSex() == 'f')
+                .filter(forumUser -> forumUser.getUserAge() > 20)
+                .filter(forumUser -> forumUser.getQuantityOfPublishedPosts() > 1)
+                .collect(Collectors.toMap(ForumUser::getId, v -> v ));
+
+        theMapOfForumUsers.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
+//    }
+}}
