@@ -24,7 +24,7 @@ public class WorldTestSuite {
         Continent continent1 = new Continent("Europa");
         Continent continent2 = new Continent("Ameryka Południowa");
         Continent continent3 = new Continent("Azja");
-        Continent continent4 = new Continent("Afryka");
+        Continent continent4 = new Continent("Africa");
 
         continent1.addCountry(country1);
         continent1.addCountry(country2);

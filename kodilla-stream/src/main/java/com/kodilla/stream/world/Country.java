@@ -2,17 +2,17 @@ package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
 
-public final class Country {
+final class Country {
 
-    String countryName;
-    BigDecimal peopleQuantity;
+    private final String countryName;
+    private final BigDecimal peopleQuantity;
 
-    public Country(String countryName, BigDecimal peopleQuantity) {
+    Country(String countryName, BigDecimal peopleQuantity) {
         this.countryName = countryName;
         this.peopleQuantity = peopleQuantity;
     }
 
-    public  BigDecimal getPeopleQuantity(){
+    BigDecimal getPeopleQuantity(){
         return peopleQuantity;
     }
 }
