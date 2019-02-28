@@ -26,6 +26,8 @@ public class WorldTestSuite {
         Continent continent3 = new Continent("Azja");
         Continent continent4 = new Continent("Africa");
 
+        World earth = new World();
+
         continent1.addCountry(country1);
         continent1.addCountry(country2);
         continent1.addCountry(country3);
@@ -40,12 +42,12 @@ public class WorldTestSuite {
         continent4.addCountry(country9);
         continent4.addCountry(country10);
 
-        World.addContinents(continent1);
-        World.addContinents(continent2);
-        World.addContinents(continent3);
-        World.addContinents(continent4);
+        earth.addContinents(continent1);
+        earth.addContinents(continent2);
+        earth.addContinents(continent3);
+        earth.addContinents(continent4);
         //When
-        BigDecimal quantityOfPeople =  World.getPeopleQuantity();
+        BigDecimal quantityOfPeople =  earth.getPeopleQuantity();
         //Then
         Assert.assertEquals(new BigDecimal("1000000"), quantityOfPeople);
     }

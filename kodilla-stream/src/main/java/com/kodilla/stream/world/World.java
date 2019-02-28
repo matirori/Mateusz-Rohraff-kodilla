@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
-final class World {
-    static private final Set<Continent>  continentsOnEarth = new HashSet<>();
+final public class World {
+    private final Set<Continent>  continentsOnEarth = new HashSet<>();
 
-    static void addContinents(Continent continent) {
+    void addContinents(Continent continent) {
         continentsOnEarth.add(continent);
     }
 
-    static BigDecimal getPeopleQuantity(){
+    public BigDecimal getPeopleQuantity(){
         return continentsOnEarth.stream()
                 .flatMap(continent -> continent.getCountriesOnTheContinent().stream())
                 .map(Country::getPeopleQuantity)
