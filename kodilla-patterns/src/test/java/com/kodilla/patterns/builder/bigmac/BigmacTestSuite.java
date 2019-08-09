@@ -18,7 +18,7 @@ public class BigmacTestSuite {
         String bun = bigmac.getBun();
         int quantityOfBurgers = bigmac.getBurgers();
         String souce = bigmac.getSauce();
-        String ingredient = bigmac.getIngredients().get(1).getIngredientName();
+        String ingredient = bigmac.getIngredients().get(0).getIngredientName();
         //Then
         Assert.assertEquals("sesame bun", bun);
         Assert.assertEquals(2, quantityOfBurgers);

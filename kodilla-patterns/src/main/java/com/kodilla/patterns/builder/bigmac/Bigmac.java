@@ -2,18 +2,19 @@ package com.kodilla.patterns.builder.bigmac;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public final class Bigmac {
     private final String bun;
     private final int burgers;
     private final String sauce;
-    private final ArrayList<Ingredient> ingredients;
+    private final List<Ingredient> ingredients;
 
     public static class BigmacBuilder {
         private  String bun;
         private  int burgers;
         private  String sauce;
-        private ArrayList<Ingredient> ingredients;
+        private List<Ingredient> ingredients = new ArrayList<>();
 
         public BigmacBuilder Bun(String bun) {
             if (bun.equals("sesame bun") || bun.equals("normal bun")) {
@@ -35,7 +36,7 @@ public final class Bigmac {
         }
 
         public BigmacBuilder Ingredients(String ingredient) {
-            ingredients.add(IngredientsFactory.makeIngredient(ingredient));
+            this.ingredients.add(IngredientsFactory.makeIngredient(ingredient));
             return this;
         }
 
@@ -44,7 +45,7 @@ public final class Bigmac {
         }
     }
 
-    private Bigmac(String bun, int burgers, String sauce, ArrayList ingredients) {
+    private Bigmac(String bun, int burgers, String sauce, List ingredients) {
         this.bun = bun;
         this.burgers = burgers;
         this.sauce = sauce;
@@ -63,7 +64,7 @@ public final class Bigmac {
         return sauce;
     }
 
-    public ArrayList<Ingredient> getIngredients() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 

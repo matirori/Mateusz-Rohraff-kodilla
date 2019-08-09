@@ -11,7 +11,7 @@ public class IngredientsFactory {
     public static final String CHEESE = "CHEESE";
 
     public static final Ingredient makeIngredient(final String ingredient) {
-        switch (ingredient) {
+        switch (ingredient.toUpperCase()) {
             case SALAD:
                 return new Ingredient("Salad");
             case ONION:
