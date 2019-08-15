@@ -28,6 +28,7 @@ public class Invoice {
         return id;
     }
 
+    @NotNull
     @Column(name = "NUMBER")
     public int getNumber() {
         return number;
@@ -43,15 +44,15 @@ public class Invoice {
         return items;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setNumber(int number) {
         this.number = number;
     }
 
     public void setItems(List<Item> items) {
         this.items = items;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

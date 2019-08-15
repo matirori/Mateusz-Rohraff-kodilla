@@ -32,12 +32,8 @@ public class Item {
         return id;
     }
 
-
-    @ManyToOne(
-            targetEntity = Product.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
-    )
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PRODUCTS_ID")
     public Product getProduct() {
         return product;
     }
@@ -60,10 +56,14 @@ public class Item {
         return value;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
+    }
+
+    public void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     public void setProduct(Product product) {
@@ -82,7 +82,7 @@ public class Item {
         this.value = value;
     }
 
-    public void setInvoice(Invoice invoice) {
-        this.invoice = invoice;
+    public void setId(int id) {
+        this.id = id;
     }
 }

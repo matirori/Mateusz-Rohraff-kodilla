@@ -30,6 +30,10 @@ public class InvoiceDaoTestSuite {
 
         Invoice invoice = new Invoice(999);
 
+        product.getItems().add(item);
+        product.getItems().add(item1);
+        product1.getItems().add(item2);
+
         item.setProduct(product);
         item1.setProduct(product);
         item2.setProduct(product1);
@@ -38,14 +42,18 @@ public class InvoiceDaoTestSuite {
         invoice.getItems().add(item1);
         invoice.getItems().add(item2);
 
+        item.setInvoice(invoice);
+        item1.setInvoice(invoice);
+        item2.setInvoice(invoice);
+
         //When
         invoiceDao.save(invoice);
-        int size = invoice.getItems().size();
+        int id = invoice.getId();
 
         //Then
-        Assert.assertEquals(3, size);
+        Assert.assertNotEquals(0, id);
 
         //CleanUp
-        //invoiceDao.delete(invoice);
+        invoiceDao.delete(invoice);
     }
 }
