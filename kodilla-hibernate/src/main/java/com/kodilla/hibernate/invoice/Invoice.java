@@ -10,13 +10,13 @@ import java.util.List;
 @Table(name = "INVOICE")
 public class Invoice {
     private int id;
-    private int number;
+    private String number;
     private List<Item> items = new ArrayList<>();
 
     public Invoice() {
     }
 
-    public Invoice(int number) {
+    public Invoice(String number) {
         this.number = number;
     }
 
@@ -30,7 +30,7 @@ public class Invoice {
 
     @NotNull
     @Column(name = "NUMBER")
-    public int getNumber() {
+    public String getNumber() {
         return number;
     }
 
@@ -44,7 +44,7 @@ public class Invoice {
         return items;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
