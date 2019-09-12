@@ -9,7 +9,8 @@ public class ExceptionHanding {
             secondChallenge.probablyIWillThrowException(2, 1.5);
         } catch (Exception e) {
             System.out.println("Znaleziono wyjątek");
+        } finally {
+            System.out.println("Proces zakończony");
         }
-
     }
 }
