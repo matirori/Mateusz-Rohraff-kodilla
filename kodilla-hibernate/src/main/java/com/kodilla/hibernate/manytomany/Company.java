@@ -1,18 +1,28 @@
 package com.kodilla.hibernate.manytomany;
 
 import com.sun.istack.internal.NotNull;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompaniesByFirstThreeLetters",
-        query = "SELECT LEFT (COMPANY_NAME, 3) COMPANY_CODE FROM COMPANIES," +
-                " WHERE COMPANY_CODE LIKE :COMPANY_CODE",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompaniesByFirstThreeLetters",
+                query = "SELECT LEFT (COMPANY_NAME, 3) COMPANY_CODE FROM COMPANIES" +
+                        " WHERE COMPANY_CODE LIKE :COMPANY_CODE",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveWithAnyLetters",
+                query = "SELECT * FROM COMPANIES" +
+                        " WHERE COMPANY_NAME LIKE CONCAT('%', :ARG ,'%')",
+                resultClass = Company.class
+        )
+})
 
+@Service
 @Entity
 @Table(name = "COMPANIES")
 public class Company {

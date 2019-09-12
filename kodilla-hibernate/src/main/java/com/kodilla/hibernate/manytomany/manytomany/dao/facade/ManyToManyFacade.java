@@ -24,36 +24,20 @@ public class ManyToManyFacade {
     }
 
 
-    public List<Employee> searchEmployee(String findEmployee) throws ManyToManyException {
-        List<Employee> lastname = employeeDao.retrievePeopleByName(findEmployee);
-        if(findEmployee.isEmpty()) {
-            throw new ManyToManyException(ManyToManyException.ERR_SEARCHEMPLOYEE_ERROR);
-        }
-        return lastname;
+    public List<Employee> searchEmployee(String findEmployee) {
+        return employeeDao.retrievePeopleByName(findEmployee);
     }
 
-    public List<Employee> searchEmployeeAny(String findEmployee) throws ManyToManyException {
-        List<Employee> lastname = employeeDao.retrieveWithAnyLettersLastname(findEmployee);
-        if(findEmployee.isEmpty()) {
-            throw new ManyToManyException(ManyToManyException.ERR_SEARCHEMPLOYEE_ERROR);
-        }
-        return lastname;
+    public List<Employee> searchEmployeeAny(String findEmployee){
+        return employeeDao.retrieveWithAnyLettersLastname(findEmployee);
     }
 
-    public List<Company> searchCompany(String findCompany) throws ManyToManyException {
-        List<Company> threeFirstLetters = companyDao.retrieveCompaniesByFirstThreeLetters(findCompany);
-        if(threeFirstLetters.size()<1) {
-            throw new ManyToManyException(ManyToManyException.ERR_SEARCHCOMPANY_ERROR);
-        }
-        return threeFirstLetters;
+    public List<Company> searchCompany(String findCompany) {
+        return companyDao.retrieveCompaniesByFirstThreeLetters(findCompany);
     }
 
-    public List<Company> searchCompanyAny(String findCompany) throws ManyToManyException {
-        List<Company> anyLetters = companyDao.retrieveWithAnyLetters(findCompany);
-        if(anyLetters.size()<1) {
-            throw new ManyToManyException(ManyToManyException.ERR_SEARCHCOMPANY_ERROR);
-        }
-        return anyLetters;
+    public List<Company> searchCompanyAny(String findCompany) {
+        return companyDao.retrieveWithAnyLetters(findCompany);
     }
 }
 

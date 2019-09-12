@@ -2,6 +2,8 @@ package com.kodilla.hibernate.manytomany.manytomany.dao.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
+import com.kodilla.hibernate.manytomany.manytomany.dao.CompanyDao;
+import com.kodilla.hibernate.manytomany.manytomany.dao.EmployeeDao;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,8 +18,14 @@ public class ManyToManyFacadeTest {
     @Autowired
     ManyToManyFacade manyToManyFacade;
 
+    @Autowired
+    CompanyDao companyDao;
+
+    @Autowired
+    EmployeeDao employeeDao;
+
     @Test
-    public void facadeCompanyTest() {
+    public void facadeCompanyTestSearchingByThreeLetters() {
         //Given
         Employee johnSmith1 = new Employee("John", "Smith");
         Employee stephanieClarckson1 = new Employee("Stephanie", "Clarckson");
@@ -49,14 +57,14 @@ public class ManyToManyFacadeTest {
         List<Company> threeFirstLetters = null;
         try {
             threeFirstLetters = manyToManyFacade.searchCompany("Sof");
-        } catch (ManyToManyException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         List<Company> anyLetters = null;
         try {
             anyLetters = manyToManyFacade.searchCompanyAny("ter");
-        } catch (ManyToManyException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -65,7 +73,13 @@ public class ManyToManyFacadeTest {
             Assert.assertEquals(1, threeFirstLetters.size());
             Assert.assertEquals(2, anyLetters.size());
         } catch (Exception e){}
+
+        //Clean up
+        companyDao.deleteById(softwareMachine1.getId());
+        companyDao.deleteById(dataMaesters1.getId());
+        companyDao.deleteById(greyMatter1.getId());
     }
+
 
     @Test
     public void facadeEmployeeTest() {
@@ -101,14 +115,14 @@ public class ManyToManyFacadeTest {
         List<Employee> lastname = null;
         try {
             lastname = manyToManyFacade.searchEmployee("Smith");
-        } catch (ManyToManyException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         List<Employee> anyLettersLastname = null;
         try {
             anyLettersLastname = manyToManyFacade.searchEmployeeAny("th");
-        } catch (ManyToManyException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

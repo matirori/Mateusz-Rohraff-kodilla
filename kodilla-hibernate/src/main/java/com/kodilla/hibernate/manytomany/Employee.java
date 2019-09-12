@@ -1,18 +1,24 @@
 package com.kodilla.hibernate.manytomany;
 
 import com.sun.istack.internal.NotNull;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQueries(
+@NamedQueries({
         @NamedQuery(
                 name = "Employee.retrievePeopleByName",
-                query = "FROM Employee WHERE lastname LIKE :LASTNAME"
-        )
-)
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.retrieveWithAnyLettersLastname",
+                query = "FROM Employee WHERE lastname LIKE CONCAT('%', :ARG ,'%')"
+        ),
+})
 
+@Service
 @Entity
 @Table(name = "EMPLOYEES")
 public class Employee {
